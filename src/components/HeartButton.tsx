@@ -5,14 +5,22 @@ import { cn } from "@/lib/utils";
 export const HeartButton = () => {
   const [isPressed, setIsPressed] = useState(false);
   const [showHand, setShowHand] = useState(false);
+  const [isFalling, setIsFalling] = useState(false);
 
   const handlePress = () => {
     setIsPressed(true);
-    setShowHand(true);
-    // Reset heart pulse after animation
-    setTimeout(() => setIsPressed(false), 1000);
-    // Reset hand after a longer duration
-    setTimeout(() => setShowHand(false), 2000);
+    // Start falling animation after pulse
+    setTimeout(() => {
+      setIsFalling(true);
+      setShowHand(true);
+    }, 1000);
+    
+    // Reset all animations
+    setTimeout(() => {
+      setIsPressed(false);
+      setIsFalling(false);
+      setShowHand(false);
+    }, 2500);
   };
 
   return (
@@ -29,7 +37,8 @@ export const HeartButton = () => {
             "w-12 h-12 transition-all duration-300",
             "group-hover:fill-love group-hover:stroke-love",
             "group-active:scale-90",
-            isPressed && "animate-heart-pulse fill-love stroke-love"
+            isPressed && "animate-heart-pulse fill-love stroke-love",
+            isFalling && "animate-heart-fall fill-love stroke-love"
           )}
         />
         {showHand && (
