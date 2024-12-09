@@ -51,10 +51,6 @@ export default {
           "0%": { opacity: "0", transform: "translateY(5px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        "hand-appear": {
-          "0%": { opacity: "0", transform: "translateY(10px) scale(0.8)" },
-          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
-        },
         "heart-fall": {
           "0%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(20px)" },
@@ -75,7 +71,6 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "heart-pulse": "heart-pulse 1s ease-in-out",
         "fade-in": "fade-in 0.3s ease-out",
-        "hand-appear": "hand-appear 0.5s ease-out forwards",
         "heart-fall": "heart-fall 0.5s ease-in forwards",
         "sparkle": "sparkle 1s ease-in-out",
         "float": "float 3s ease-in-out infinite",

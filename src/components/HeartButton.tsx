@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Heart, Hand, Sparkles } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const HeartButton = () => {
   const [isPressed, setIsPressed] = useState(false);
-  const [showHand, setShowHand] = useState(false);
   const [isFalling, setIsFalling] = useState(false);
   const [showSparkles, setShowSparkles] = useState(false);
 
@@ -15,14 +14,12 @@ export const HeartButton = () => {
     // Start falling animation after pulse
     setTimeout(() => {
       setIsFalling(true);
-      setShowHand(true);
     }, 1000);
     
     // Reset all animations
     setTimeout(() => {
       setIsPressed(false);
       setIsFalling(false);
-      setShowHand(false);
       setShowSparkles(false);
     }, 2500);
   };
@@ -52,14 +49,6 @@ export const HeartButton = () => {
             <Sparkles className="absolute -top-4 -left-4 w-6 h-6 stroke-love animate-sparkle [animation-delay:0.2s]" />
             <Sparkles className="absolute -bottom-4 -right-4 w-6 h-6 stroke-love animate-sparkle [animation-delay:0.4s]" />
           </>
-        )}
-        {showHand && (
-          <Hand
-            className={cn(
-              "absolute -bottom-4 -right-4 w-8 h-8",
-              "stroke-love animate-hand-appear"
-            )}
-          />
         )}
       </div>
       <span
