@@ -51,12 +51,17 @@ export default {
           "0%": { opacity: "0", transform: "translateY(5px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "hand-appear": {
+          "0%": { opacity: "0", transform: "translateY(10px) scale(0.8)" },
+          "100%": { opacity: "1", transform: "translateY(0) scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "heart-pulse": "heart-pulse 1s ease-in-out",
         "fade-in": "fade-in 0.3s ease-out",
+        "hand-appear": "hand-appear 0.5s ease-out forwards",
       },
     },
   },
