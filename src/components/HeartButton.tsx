@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { Heart, Hand } from "lucide-react";
+import { Heart, Hand, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const HeartButton = () => {
   const [isPressed, setIsPressed] = useState(false);
   const [showHand, setShowHand] = useState(false);
   const [isFalling, setIsFalling] = useState(false);
+  const [showSparkles, setShowSparkles] = useState(false);
 
   const handlePress = () => {
     setIsPressed(true);
+    setShowSparkles(true);
+    
     // Start falling animation after pulse
     setTimeout(() => {
       setIsFalling(true);
@@ -20,6 +23,7 @@ export const HeartButton = () => {
       setIsPressed(false);
       setIsFalling(false);
       setShowHand(false);
+      setShowSparkles(false);
     }, 2500);
   };
 
@@ -28,7 +32,8 @@ export const HeartButton = () => {
       onClick={handlePress}
       className={cn(
         "relative group flex flex-col items-center gap-2 p-4 rounded-full transition-all duration-300",
-        "hover:bg-love-light/10 active:bg-love-light/20"
+        "hover:bg-love-light/10 active:bg-love-light/20",
+        "animate-float"
       )}
     >
       <div className="relative">
@@ -41,6 +46,13 @@ export const HeartButton = () => {
             isFalling && "animate-heart-fall fill-love stroke-love"
           )}
         />
+        {showSparkles && (
+          <>
+            <Sparkles className="absolute -top-4 -right-4 w-6 h-6 stroke-love animate-sparkle" />
+            <Sparkles className="absolute -top-4 -left-4 w-6 h-6 stroke-love animate-sparkle [animation-delay:0.2s]" />
+            <Sparkles className="absolute -bottom-4 -right-4 w-6 h-6 stroke-love animate-sparkle [animation-delay:0.4s]" />
+          </>
+        )}
         {showHand && (
           <Hand
             className={cn(
